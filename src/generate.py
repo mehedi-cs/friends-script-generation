@@ -1,3 +1,7 @@
+import numpy as np
+import torch
+import torch.nn.functional as F
+
 def generate(rnn, prime_id, int_to_vocab, token_dict, pad_value, predict_len, sequence_length, device):
     rnn.eval()
     current_seq = np.full((1, sequence_length), pad_value)
