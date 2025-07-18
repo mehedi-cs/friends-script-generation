@@ -27,3 +27,8 @@ criterion = nn.CrossEntropyLoss()
 
 trained_rnn = train_rnn(rnn, train_loader, optimizer, criterion, EPOCHS, BATCH_SIZE, DEVICE)
 torch.save(trained_rnn.state_dict(), './models/rnn_trained.pt')
+
+pad_value = vocab_to_int['<PAD>']
+prime_word = 'joey'
+generated = generate(trained_rnn, vocab_to_int[prime_word], int_to_vocab, pun_dic(), pad_value, 400, SEQ_LEN, DEVICE)
+print(generated)
